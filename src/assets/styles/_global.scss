@@ -55,8 +55,14 @@ a {
 }
 .p-datepicker-calendar {
     margin: 2rem;
+    .p-element {
+        padding: 0 2rem;
+        border-radius: 8px;
+        border: 1px solid #d7d7d7;
+        background: #fff;
+    }
     .p-highlight {
-        padding: 0.5rem;
+        padding: 0 2rem;
         border-radius: 8px;
         border: 1px solid #f2542d;
         background: #fff4f1;
@@ -65,7 +71,7 @@ a {
 }
 .p-datepicker-today {
     .p-element {
-        padding: 0.5rem;
+        padding: 0 2rem;
         border-radius: 8px;
         border: 1px solid #f2542d;
         background: #fff4f1;

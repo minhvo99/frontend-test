@@ -165,11 +165,10 @@
             height: 500px;
             // position: relative;
             overflow: hidden;
-
-            @media (max-width: 600px) {
-                #map {
-                    height: 150px;
-                }
+        }
+        @media (max-width: 600px) {
+            #map {
+                height: 180px;
             }
         }
     }
@@ -423,6 +422,10 @@
         justify-content: center;
         align-items: flex-start;
         padding: 6rem;
+
+        @media (max-width: 767px) {
+            padding: 1rem;
+        }
     }
     .card {
         display: flex;
