@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "SOA-test": {
+    "frontend-test": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -24,7 +24,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/soa-test",
+            "outputPath": "dist/frontend-test",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -37,7 +37,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+              "node_modules/primeng/resources/primeng.min.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -74,10 +77,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "SOA-test:build:production"
+              "buildTarget": "frontend-test:build:production"
             },
             "development": {
-              "buildTarget": "SOA-test:build:development"
+              "buildTarget": "frontend-test:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -85,7 +88,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "SOA-test:build"
+            "buildTarget": "frontend-test:build"
           }
         },
         "test": {
@@ -109,5 +112,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "4a5843a1-9d4b-48f6-b7fc-d91672569509"
   }
 }

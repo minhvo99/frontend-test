@@ -1,0 +1,26 @@
+<div class="nav">
+    <input type="checkbox" class="nav__input" id="nav__input" />
+    <h3 class="logo">LOGO SAMPLE</h3>
+    <label for="nav__input" class="nav__bar-btn">
+        <i class="fas fa-bars"></i>
+    </label>
+    <label for="nav__input" class="nav__overlay"></label>
+    <nav class="nav__menu">
+        <ul class="nav__list">
+            <li *ngFor="let menu of 'head_menu' | translate">
+                <a class="nav__link">{{ menu }}</a>
+            </li>
+            <p-dropdown
+                [options]="languages"
+                [(ngModel)]="selectedLanguage"
+                optionLabel="name"
+                placeholder="Language"
+                (onChange)="changeLanguage($event.value.code)"
+                styleClass="global-dropdown"
+            />
+        </ul>
+        <label for="nav__input" class="nav__close-btn">
+            <i class="fas fa-times"></i>
+        </label>
+    </nav>
+</div>
