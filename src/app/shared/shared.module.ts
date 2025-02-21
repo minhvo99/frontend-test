@@ -17,6 +17,11 @@ import { BadgeModule } from 'primeng/badge';
 import { DropdownModule } from 'primeng/dropdown';
 import { LoadingComponent } from './components/loading/loading.component';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { AngularSvgIconModule } from 'angular-svg-icon';
+import { ButtonComponent } from './components/button/button.component';
+import { CalendarModule } from 'primeng/calendar';
+import { EditorModule } from 'primeng/editor';
+import { FileUploadModule } from 'primeng/fileupload';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -34,10 +39,20 @@ const imports = [
     MenubarModule,
     BadgeModule,
     DropdownModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    AngularSvgIconModule,
+    CalendarModule,
+    EditorModule,
+    FileUploadModule
 ];
 
-const declarations = [HeaderComponent, FooterComponent, ToastComponent, LoadingComponent];
+const declarations = [
+    HeaderComponent,
+    FooterComponent,
+    ToastComponent,
+    LoadingComponent,
+    ButtonComponent,
+];
 
 @NgModule({
     imports: [
@@ -50,6 +65,7 @@ const declarations = [HeaderComponent, FooterComponent, ToastComponent, LoadingC
             },
             defaultLanguage: 'en',
         }),
+        AngularSvgIconModule.forRoot(),
     ],
     declarations: [...declarations],
     exports: [...imports, ...declarations],

@@ -1,0 +1,36 @@
+<footer class="bg-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3">
+                <div class="address">{{ 'footer.address.name' | translate }}</div>
+                <div class="phone">{{ 'footer.address.phone' | translate }}</div>
+                <div class="location">{{ 'footer.address.location' | translate }}</div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <ul>
+                    <li class="link" *ngFor="let item of 'footer.links' | translate">
+                        {{ item.name }}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="link">Titre 1</div>
+                <div class="link">Titre 2</div>
+                <div class="link">Titre 3</div>
+            </div>
+            <div class="col-lg-3 col-md-3">
+                <div class="link">Blog</div>
+                <div class="link">Nous contacter</div>
+            </div>
+        </div>
+        <div class="under-line"></div>
+        <div class="social flex justify-content-between align-items-center">
+            <div class="text">© BASIC 2024</div>
+            <div class="icon flex justify-content-between align-items-center mx-2">
+                <svg-icon src="assets/svg/fb.svg"></svg-icon>
+                <svg-icon src="assets/svg/ins.svg"></svg-icon>
+                <svg-icon src="assets/svg/ytb.svg"></svg-icon>
+            </div>
+        </div>
+    </div>
+</footer>

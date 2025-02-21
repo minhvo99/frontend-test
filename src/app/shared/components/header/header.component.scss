@@ -1,19 +1,21 @@
 .nav {
     display: flex;
     align-items: center;
-    justify-content: center;
-    box-shadow:
-        rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,
-        rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-    background-color: #a45a5a;
+    justify-content: space-evenly;
+    border-bottom: 1px solid rgba(238, 238, 238, 0.2);
+    background: rgba(86, 44, 44, 0.7);
 
     @media (max-width: 1024px) {
         justify-content: space-between;
         padding: 1rem;
     }
     .logo {
-        padding: 2rem;
         color: #fff;
+        font-family: Poppins;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
 
         @media (max-width: 1024px) {
             padding: 0rem;
@@ -26,6 +28,7 @@
         &:checked {
             ~ .nav__menu {
                 transform: translateX(0);
+                z-index: 3;
             }
 
             ~ .nav__overlay {
@@ -53,10 +56,11 @@
         display: none;
     }
 
-    &__menu {
+    &__menu,
+    .actions {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-evenly;
         margin: 20px 0;
 
         @media (max-width: 1024px) {
@@ -88,13 +92,20 @@
 
     &__link {
         padding: 2rem;
-        color: #fff;
+        color: rgba(255, 255, 255, 0.9);
+        font-family: Poppins;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 150%;
+        text-transform: capitalize;
+        text-decoration: none;
 
         @media (max-width: 1024px) {
             display: block;
             width: 100%;
             padding: 1rem;
-            color: #a45a5a;
+            color: rgba(86, 44, 44, 0.7);
         }
     }
 
@@ -116,6 +127,20 @@
     @media (max-width: 1024px) {
         &__bar-btn {
             display: block;
+        }
+    }
+}
+::ng-deep {
+    .global-dropdown {
+        width: 120px;
+        padding: 5px;
+
+        &:focus-visible {
+            outline: none;
+        }
+
+        &:hover {
+            border-color: #d1d5db;
         }
     }
 }

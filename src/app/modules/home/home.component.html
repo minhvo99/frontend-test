@@ -1,2 +1,285 @@
-<section class="content"></section>
+<section class="hero-section">
+    <div class="hero-image">
+        <div class="hero-action">
+            <svg-icon src="assets/svg/Mountains-2.svg"></svg-icon>
+            <svg-icon src="assets/svg/Fishing icon-2-32px.svg"></svg-icon>
+            <svg-icon src="assets/svg/Crosshair-2.svg"></svg-icon>
+        </div>
+        <div class="chat">
+            <app-button class="main-btn" icon="Chats"></app-button>
+        </div>
+    </div>
+</section>
+<section class="bloc-section bloc-1 container my-6">
+    <div class="row">
+        <div class="title-container">
+            <div class="line"></div>
+            <h2 class="title">{{ 'bloc_1.title' | translate }}</h2>
+            <div class="line"></div>
+        </div>
+        <p class="subtitle">{{ 'bloc_1.subtitle' | translate }}</p>
+        <div
+            class="card col-lg-4 col-md-4 col-sm-12"
+            *ngFor="let case of 'bloc_1.cases' | translate; let i = index"
+        >
+            <img src="assets/images/{{ imgSection1[i] }}.png" alt="Image 1" />
+            <p class="card-category">
+                <span>{{ case.category }}</span>
+            </p>
+            <h3 class="card-title">{{ case.tagline }}</h3>
+            <p class="card-text">{{ case.description }}</p>
+            <app-button
+                text="{{ case.cta }}"
+                icon="ArrowUpRight-green"
+                class="card-btn"
+            ></app-button>
+        </div>
+    </div>
+</section>
+<section class="bloc-section bloc-2 container my-6">
+    <div class="row">
+        <div class="title-container mt-4">
+            <div class="line"></div>
+            <h2 class="title">{{ 'bloc_2.title' | translate }}</h2>
+            <div class="line"></div>
+        </div>
+        <div
+            class="group-button flex flex-row flex-wrap align-items-center justify-content-center gap-4 mb-6"
+        >
+            <app-button
+                *ngFor="let text of 'bloc_2.cases' | translate; let i = index"
+                text="{{ text }}"
+                class="activity-btn"
+                [icon]="icons[i]"
+            ></app-button>
+        </div>
+        <div class="map-container">
+            <div id="map"></div>
+        </div>
+    </div>
+</section>
+<section class="bloc-section bloc-3 container my-6">
+    <div class="row">
+        <div class="title-container mt-4">
+            <div class="line"></div>
+            <h2 class="title">{{ 'bloc_2_2.title' | translate }}</h2>
+            <div class="line"></div>
+        </div>
+        <div class="calender">
+            <div class="">
+                <p-calendar
+                    class="max-w-full"
+                    [(ngModel)]="date"
+                    [inline]="true"
+                    [showWeek]="false"
+                    styleClass="calendar-custom"
+                    selectionMode="multiple"
+                    [disabledDates]="disabledDates"
+                />
+            </div>
+        </div>
+        <form class="mt-3" [formGroup]="formMessage">
+            <div class="my-3 form-name flex justify-content-between align-items-center">
+                <label for="name" class="form-label mr-6">Name: </label>
+                <input
+                    type="text"
+                    class="form-control ng-invalid ng-dirty"
+                    formControlName="name"
+                    id="name"
+                    placeholder="Enter your name"
+                    pInputText
+                />
+                <small *ngIf="getError('name')" style="color: rgb(159, 56, 56)"
+                    >Name is required</small
+                >
+            </div>
+            <div class="my-3 form-email flex justify-content-between align-items-center">
+                <label for="email" class="form-label mr-6">Email: </label>
+                <input
+                    type="email"
+                    class="form-control ng-invalid ng-dirty"
+                    id="email"
+                    placeholder="Enter your email"
+                    formControlName="email"
+                    pInputText
+                />
+                <small *ngIf="getError('email')" style="color: rgb(159, 56, 56)"
+                    >Email is required</small
+                >
+            </div>
+            <div class="my-3 flex">
+                <label class="form-label mr-4">{{ 'bloc_2_2.btn_3' | translate }}:</label>
+                <div class="edito w-full">
+                    <p-editor [style]="{ height: '320px' }" formControlName="message" />
+                    <small *ngIf="getError('message')" style="color: rgb(159, 56, 56)"
+                        >Message is required</small
+                    >
+                </div>
+            </div>
+            <div class="my-3 flex justify-content-start align-items-center gap-4">
+                <label for="name" class="form-label mr-6">File:</label>
+                <svg-icon src="assets/svg/fileAttech.svg"></svg-icon>
+                <p-fileUpload
+                    mode="basic"
+                    chooseLabel="Attachment"
+                    accept="image/*"
+                    (onUpload)="onUpload($event)"
+                />
+                <p class="attachment-allow">(*PDF file only)</p>
+            </div>
+            <div
+                class="group-button flex flex-row flex-wrap align-items-center justify-content-end gap-4 mb-6"
+            >
+                <app-button
+                    (click)="reset()"
+                    text="{{ 'bloc_2_2.btn_5' | translate }}"
+                    class="card-btn"
+                ></app-button>
+                <app-button
+                    text="{{ 'bloc_2_2.btn_6' | translate }}"
+                    class="main-btn"
+                    icon="send"
+                ></app-button>
+            </div>
+        </form>
+    </div>
+</section>
+<section class="bloc-section bloc-4 container my-6">
+    <div class="row">
+        <div class="flex justify-content-between align-items-center">
+            <h2 class="title">{{ 'bloc_3.title' | translate }}</h2>
+            <p class="subtitle">
+                {{ 'bloc_3.more_info' | translate }}
+                <svg-icon src="assets/svg/arrow-right.svg"></svg-icon>
+            </p>
+        </div>
+        <div class="card-slider">
+            <div class="card-item" *ngFor="let case of 'bloc_3.cases' | translate; let i = index">
+                <img src="assets/images/{{ imgSection2[i] }}.png" alt="Image 1" />
+                <p class="card-category">
+                    <span>{{ case.category }}</span>
+                </p>
+                <h3 class="card-title">{{ case.tagline }}</h3>
+                <p class="card-text">{{ case.description }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="experience bloc-5 container my-6">
+    <div class="content">
+        <h2>
+            <span>{{ 'bloc_4.title' | translate }}</span
+            ><span class="light">{{ 'bloc_4.subtitle' | translate }}</span>
+        </h2>
+        <div class="about">
+            <h3>{{ 'bloc_4.text_title' | translate }}</h3>
+            <p>{{ 'bloc_4.text' | translate }}</p>
+        </div>
+    </div>
+    <div class="image">
+        <img src="assets/images/ice-scream.png" alt="Ice Cream" />
+    </div>
+</section>
+<section class="feature container my-6 mb-6">
+    <div class="flex flex-wrap align-items-center justify-content-evenly">
+        <div *ngFor="let item of 'bloc_4.pictos' | translate; let i = index">
+            <div
+                class="feature-item py-2 flex flex-column justify-content-center align-items-center"
+            >
+                <svg-icon src="assets/svg/{{ featureIcon[i] }}.svg"></svg-icon>
+                <div class="title">{{ item.title }}</div>
+                <div class="description">{{ item.description }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bloc-section bloc-6 my-6">
+    <div class="container">
+        <div class="content p-4 flex justify-content-between align-items-center">
+            <div class="text pr-2">{{ 'bloc_5.text' | translate }}</div>
+            <div class="title pl-2">{{ 'bloc_5.title' | translate }}</div>
+        </div>
+        <div class="section-image">
+            <div class="card">
+                <img src="assets/images/img-fruit.png" alt="" />
+                <div class="card-body">
+                    <div class="flex justify-content-between align-items-center">
+                        <p class="card-title" style="color: #000">La famille</p>
+                        <app-button text="24 Sep 2024"></app-button>
+                    </div>
+                    <p class="card-text" style="color: #666">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row my-3 review">
+            <div class="col-lg-3 col-sm-6 col-md-3 my-2">
+                <div class="card">
+                    <img src="assets/images/butter.png" alt="" />
+                    <div class="sub-text overlay flex justify-content-between align-items-center">
+                        <svg-icon src="assets/svg/instagram.svg"></svg-icon>
+                        <p>Anthony Durand</p>
+                        <svg-icon src="assets/svg/ArrowUpRight.svg"></svg-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-md-3 my-2">
+                <div class="card">
+                    <img src="assets/images/cherry.png" alt="" />
+                    <div class="sub-text overlay flex justify-content-between align-items-center">
+                        <svg-icon src="assets/svg/instagram.svg"></svg-icon>
+                        <p>Anthony Durand</p>
+                        <svg-icon src="assets/svg/ArrowUpRight.svg"></svg-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-md-3 my-2">
+                <div class="card">
+                    <img src="assets/images/orange-2.png" alt="" />
+                    <div class="sub-text overlay flex justify-content-between align-items-center">
+                        <svg-icon src="assets/svg/instagram.svg"></svg-icon>
+                        <p>Anthony Durand</p>
+                        <svg-icon src="assets/svg/ArrowUpRight.svg"></svg-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-md-3 my-2">
+                <div class="card">
+                    <img src="assets/images/orange.png" alt="" />
+                    <div class="sub-text overlay flex justify-content-between align-items-center">
+                        <svg-icon src="assets/svg/instagram.svg"></svg-icon>
+                        <p>Anthony Durand</p>
+                        <svg-icon src="assets/svg/ArrowUpRight.svg"></svg-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="footer flex justify-content-between align-items-center">
+                <p>
+                    Consultez &#64;BASIC et <strong>#BASIC </strong>pour découvrir les expériences
+                    inoubliables des pourvoiries et activités BASIC.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bloc-7 mt-6">
+    <div class="block-container">
+        <img src="assets/images/bg-last.png" alt="" />
+        <div class="content flex flex-column justify-content-center align-items-center">
+            <h2 class="title py-2" style="color: #562c2c">
+                {{ 'bloc_6.title' | translate | uppercase }}
+            </h2>
+            <h2 class="subtitle py -2" style="color: rgba(86, 44, 44, 0.5)">
+                {{ 'bloc_6.subtitle' | translate | uppercase }}
+            </h2>
+            <div class="text py-2" style="color: #562c2c">{{ 'bloc_6.text' | translate }}</div>
+            <app-button class="main-btn" text="{{ 'bloc_6.button' | translate }}"></app-button>
+        </div>
+    </div>
+</section>
+
 <app-loading [isLoading]="isLoading"></app-loading>

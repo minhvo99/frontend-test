@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { TranslateLoader } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class LanguageService {
+export class CustomTranslateLoader implements TranslateLoader {
+  basedUrl = `https://api.test.soa-dev.net/api/v1/pages?lang=`
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
+  getTranslation(lang: string): Observable<any> {
+    return this.http.get(`${this.basedUrl}${lang}`);
+  }
 }

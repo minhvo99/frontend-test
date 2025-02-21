@@ -10,17 +10,25 @@
             <li *ngFor="let menu of 'head_menu' | translate">
                 <a class="nav__link">{{ menu }}</a>
             </li>
-            <p-dropdown
-                [options]="languages"
-                [(ngModel)]="selectedLanguage"
-                optionLabel="name"
-                placeholder="Language"
-                (onChange)="changeLanguage($event.value.code)"
-                styleClass="global-dropdown"
-            />
         </ul>
         <label for="nav__input" class="nav__close-btn">
             <i class="fas fa-times"></i>
         </label>
     </nav>
+    <div class="actions gap-4">
+        <svg-icon src="assets/svg/Mountains.svg"></svg-icon>
+        <svg-icon src="assets/svg/Crosshair.svg"></svg-icon>
+        <svg-icon src="assets/svg/Fishing icon-32px.svg"></svg-icon>
+        <app-button text="Contactez-nous" icon="ArrowUpRight" class="main-btn"></app-button>
+    </div>
+    <div class="actions">
+        <p-dropdown
+            [options]="languages"
+            [(ngModel)]="selectedLanguage"
+            optionLabel="name"
+            placeholder="Language"
+            (onChange)="changeLanguage($event.value.code)"
+            styleClass="global-dropdown"
+        />
+    </div>
 </div>
