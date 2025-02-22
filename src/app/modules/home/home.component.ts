@@ -18,28 +18,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     featureIcon = ['auth', 'respect', 'earth', 'personal', 'smile'];
     imgSection1 = ['img1', 'img2', 'img3'];
     imgSection2 = ['img4', 'img5', 'img6', 'img7'];
-    disabledDates = [new Date(2025, 1, 28), new Date(2025, 1, 29), new Date(2024, 4, 2)];
+    iconMap = ['mapFish', 'mapMountains', 'mapCorsshands'];
+    disabledDates = [new Date(2025, 1, 28), new Date(2025, 1, 29), new Date(2025, 4, 2)];
+    locations = [[51.5 , -0.09] , [51.51, -0.1], [51.49, -0.08]]
     private map: any;
-    private locations = [
-        {
-            name: 'Pourvoirie 1',
-            activities: 'Fishing, Hunting',
-            coords: [51.5, -0.09],
-            icon: 'Mountain-2',
-        },
-        {
-            name: 'Pourvoirie 2',
-            activities: 'Camping, Canoeing',
-            coords: [51.51, -0.1],
-            icon: 'Fishing icon-2-32px',
-        },
-        {
-            name: 'Pourvoirie 3',
-            activities: 'Hiking, Wildlife Watching',
-            coords: [51.49, -0.08],
-            icon: 'Crosshair-2',
-        },
-    ];
     date: Date[] | undefined;
     formMessage!: FormGroup;
 
@@ -48,7 +30,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     ngOnInit(): void {
         this.formMessage = this.fb.group({
             name: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]],
+            email: ['', Validators.compose([Validators.required, Validators.email])],
             message: ['', Validators.required],
         });
     }
@@ -105,13 +87,24 @@ export class HomeComponent implements OnInit, AfterViewInit {
       });
       L.marker([51.5, -0.09], {icon: fishIcon}).addTo(this.map)
       .bindPopup('Ethical Hunting.')
-      .openPopup();
       L.marker([51.51, -0.1], {icon: mountainsIcon}).addTo(this.map)
       .bindPopup('Online Classes.')
-      .openPopup();
       L.marker([51.49, -0.08], {icon: corssHandsIcon}).addTo(this.map)
       .bindPopup('Gastronomic Experiences.')
-      .openPopup();
+    }
+
+    onShowPopupMap([lang , long ] : any, icon: any, message: string) {
+        const baseInco = L.icon({
+            iconUrl: `assets/images/${icon}.png`,
+            iconSize:     [38, 95],
+            shadowSize:   [50, 64], 
+            iconAnchor:   [22, 94], 
+            shadowAnchor: [4, 62], 
+            popupAnchor:  [-3, -76] 
+        });
+        L.marker([lang, long], {icon:baseInco}).addTo(this.map)
+        .bindPopup(message)
+        .openPopup();
     }
 
     onUpload(event: any) {}

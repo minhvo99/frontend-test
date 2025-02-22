@@ -89,6 +89,7 @@
 
     .card {
         border: none;
+        transition: all 0.5s ease;
         &:nth-child(even) {
             transform: translateY(-50px);
         }
@@ -146,6 +147,11 @@
                 border-color: #d45532;
             }
         }
+        &:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: scale(1.05);
+            transition: all 0.5s ease;
+        }
     }
 }
 .bloc-2 {
@@ -184,11 +190,13 @@
         text-transform: capitalize;
     }
     input {
+        width: 100%;
+        padding: 10px;
         border-radius: 123px;
         border: 1px solid rgba(86, 44, 44, 0.3);
         background: #fff;
         box-shadow: 0px 0px 30px 0px rgba(242, 84, 45, 0.1);
-        color: #aaa;
+        color: #0d0d0d;
 
         font-size: 18px;
         font-style: normal;
@@ -266,55 +274,10 @@
     }
 }
 
-.bloc-5 {
-    position: relative;
-    .bloc-title {
-        position: relative;
-        z-index: 1;
-
-        img {
-            width: 403px;
-            height: auto;
-        }
-        .title {
-            color: #f2542d;
-            font-size: 48px;
-            font-weight: 600;
-            line-height: 60px;
-            text-transform: uppercase;
-
-            @media (max-width: 600px) {
-                font-size: 32px;
-                margin: 0 2rem;
-            }
-        }
-        .subtitle {
-            color: rgba(242, 84, 45, 0.6);
-            font-family: Poppins;
-            font-size: 48px;
-            font-style: normal;
-            font-weight: 600;
-            line-height: 60px;
-            text-transform: uppercase;
-            margin: 0;
-            @media (max-width: 600px) {
-                font-size: 32px;
-                margin: 0 2rem;
-            }
-        }
-        @media (max-width: 600px) {
-            position: relative;
-            top: 0;
-            img {
-                width: 375px;
-            }
-        }
-    }
-}
 .experience {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: space-evenly;
 
     .content {
         width: 50%;
