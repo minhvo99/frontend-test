@@ -19,8 +19,16 @@ export class HomeComponent implements OnInit, AfterViewInit {
     imgSection1 = ['img1', 'img2', 'img3'];
     imgSection2 = ['img4', 'img5', 'img6', 'img7'];
     iconMap = ['mapFish', 'mapMountains', 'mapCorsshands'];
+    imgReview = ['butter', 'cherry', 'orange-2', 'orange']
     disabledDates = [new Date(2025, 1, 28), new Date(2025, 1, 29), new Date(2025, 4, 2)];
     locations = [[51.5 , -0.09] , [51.51, -0.1], [51.49, -0.08]]
+    reviewCard = {
+        img: 'assets/images/img-fruit.png',
+        date: '24 Sep 2024',
+        autho: 'La famille',
+        review: ` Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua`
+    }
     private map: any;
     date: Date[] | undefined;
     formMessage!: FormGroup;
@@ -105,6 +113,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
         L.marker([lang, long], {icon:baseInco}).addTo(this.map)
         .bindPopup(message)
         .openPopup();
+    }
+
+    onShowReview (img: string, review: any) {
+        this.reviewCard = {
+            img: `assets/images/${img}.png`,
+            date: review.date,
+            autho: review.author,
+            review: review.review
+        }
     }
 
     onUpload(event: any) {}

@@ -216,23 +216,23 @@
         </div>
         <div class="section-image">
             <div class="card">
-                <img src="assets/images/img-fruit.png" alt="" />
+                <img [src]="reviewCard.img" alt="" />
                 <div class="card-body">
                     <div class="flex justify-content-between align-items-center">
-                        <p class="card-title" style="color: #000">La famille</p>
-                        <app-button text="24 Sep 2024"></app-button>
+                        <p class="card-title" style="color: #000">{{ reviewCard.autho }}</p>
+                        <app-button [text]="reviewCard.date" class="second-btn"></app-button>
                     </div>
-                    <p class="card-text" style="color: #666">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua
-                    </p>
+                    <p class="card-text py-2" style="color: #666">{{ reviewCard.review }}</p>
                 </div>
             </div>
         </div>
         <div class="row my-3 review">
-            <div class="col-lg-3 col-sm-6 col-md-3 my-2">
-                <div class="card">
-                    <img src="assets/images/butter.png" alt="" />
+            <div
+                class="col-lg-3 col-sm-6 col-md-3 my-2"
+                *ngFor="let item of 'bloc_5.reviews' | translate; let i = index"
+            >
+                <div *ngIf="i < 4" class="card" (click)="onShowReview(imgReview[i], item)">
+                    <img src="assets/images/{{ imgReview[i] }}.png" alt="" />
                     <div class="sub-text overlay flex justify-content-between align-items-center">
                         <svg-icon src="assets/svg/instagram.svg"></svg-icon>
                         <p>Anthony Durand</p>
@@ -240,8 +240,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6 col-md-3 my-2">
-                <div class="card">
+            <!-- <div class="col-lg-3 col-sm-6 col-md-3 my-2">
+                <div class="card" (click)="onShowReview('cherry', item)">
                     <img src="assets/images/cherry.png" alt="" />
                     <div class="sub-text overlay flex justify-content-between align-items-center">
                         <svg-icon src="assets/svg/instagram.svg"></svg-icon>
@@ -251,7 +251,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 col-md-3 my-2">
-                <div class="card">
+                <div class="card" (click)="onShowReview('orange-2', item)">
                     <img src="assets/images/orange-2.png" alt="" />
                     <div class="sub-text overlay flex justify-content-between align-items-center">
                         <svg-icon src="assets/svg/instagram.svg"></svg-icon>
@@ -261,7 +261,7 @@
                 </div>
             </div>
             <div class="col-lg-3 col-sm-6 col-md-3 my-2">
-                <div class="card">
+                <div class="card" (click)="onShowReview('orange', item)">
                     <img src="assets/images/orange.png" alt="" />
                     <div class="sub-text overlay flex justify-content-between align-items-center">
                         <svg-icon src="assets/svg/instagram.svg"></svg-icon>
@@ -269,7 +269,7 @@
                         <svg-icon src="assets/svg/ArrowUpRight.svg"></svg-icon>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="footer flex justify-content-between align-items-center">
                 <p>
                     Consultez &#64;BASIC et <strong>#BASIC </strong>pour découvrir les expériences
