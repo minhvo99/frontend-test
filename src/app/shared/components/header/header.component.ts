@@ -11,10 +11,9 @@ import { TranslateService } from '@ngx-translate/core';
 export class HeaderComponent implements OnInit {
     languages: any[] | undefined;
 
-    selectedLanguage ={ name: 'English', code: 'EN' };
+    selectedLanguage!: any;
     constructor(
         private translate: TranslateService,
-        private toast: ToastService,
         public router: Router,
     ) {}
     ngOnInit(): void {
@@ -22,6 +21,8 @@ export class HeaderComponent implements OnInit {
             { name: 'France', code: 'FR' },
             { name: 'English', code: 'EN' },
         ];
+        const defaultLag = this.translate.getDefaultLang();
+        this.selectedLanguage = this.languages.find((x) => x.code.toLocaleLowerCase() === defaultLag);
     }
 
     changeLanguage(lange: string): void {

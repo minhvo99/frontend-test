@@ -21,7 +21,7 @@ a {
     text-decoration: none;
 }
 .global-dropdown {
-    width: 120px;
+    width: 100px;
     padding: 5px;
 
     &:focus-visible {
@@ -30,6 +30,13 @@ a {
 
     &:hover {
         border-color: #d1d5db;
+    }
+    .p-dropdown-items {
+        margin: 0;
+        padding: 0;
+        .p-dropdown-item {
+            text-align: center;
+        }
     }
 }
 

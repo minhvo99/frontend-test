@@ -4,9 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
-import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule } from '@ngx-translate/core';
 import { ToastModule } from 'primeng/toast';
 import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
@@ -22,10 +20,6 @@ import { ButtonComponent } from './components/button/button.component';
 import { CalendarModule } from 'primeng/calendar';
 import { EditorModule } from 'primeng/editor';
 import { FileUploadModule } from 'primeng/fileupload';
-
-export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
-    return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
-}
 
 const imports = [
     CommonModule,
@@ -57,15 +51,7 @@ const declarations = [
 @NgModule({
     imports: [
         ...imports,
-        TranslateModule.forRoot({
-            loader: {
-                provide: TranslateLoader,
-                useFactory: HttpLoaderFactory,
-                deps: [HttpClient],
-            },
-            defaultLanguage: 'en',
-        }),
-        AngularSvgIconModule.forRoot(),
+      
     ],
     declarations: [...declarations],
     exports: [...imports, ...declarations],
